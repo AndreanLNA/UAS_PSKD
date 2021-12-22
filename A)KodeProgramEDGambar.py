@@ -1,6 +1,6 @@
 import os
 from Crypto.Util.Padding import pad, unpad
-from Crypto.Cipher import AES
+from Crypto.Cipher import AES //import AES
 
 
 def getKey(keysize):
@@ -12,10 +12,10 @@ def getIV(blocksize):
     iv = os.urandom(blocksize)
     return iv
 
-
+//program enkripsi foto
 def encrypt_image(filename, key, iv):
     BLOCKSIZE = 16
-    encrypted_filename = "Hasil_Enkripsi_" + filename
+    encrypted_filename = "Hasil_Enkripsi_" + filename   //menentukan nama file yang telah dienkripsi
 
     with open(filename, "rb") as file1:
         data = file1.read()
@@ -27,10 +27,10 @@ def encrypt_image(filename, key, iv):
             file2.write(ciphertext)
     return encrypted_filename
 
-
+//Program deskripsi foto dari hasil enkripsi di atas
 def decrypt_image(filename, key, iv):
     BLOCKSIZE = 16
-    decrypted_filename = "Hasil_Deskripsi_" + filename
+    decrypted_filename = "Hasil_Deskripsi_" + filename     //menentukan nama file yang telah di deskripsi
 
     with open(filename, "rb") as file1:
         data = file1.read()
@@ -46,7 +46,7 @@ def decrypt_image(filename, key, iv):
 
 KEYSIZE = 16
 BLOCKSIZE = 16
-filename = "Andrean.JPG"
+filename = "Andrean.JPG"         //Memasukkan nama foto yang akan dienkripsi
 
 key = getKey(KEYSIZE)
 iv = getIV(BLOCKSIZE)
